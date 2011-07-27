@@ -1,0 +1,4 @@
+<h2 class="page_title">About You</h2>
+<p>Please tell us about yourself.</p>
+<%= error_messages_for :respondent %>
+<%= render :partial => "respondent_form", :locals => { :respondent => @respondent } %>

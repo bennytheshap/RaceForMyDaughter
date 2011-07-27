@@ -1,4 +1,17 @@
 RaceForMyDaughter::Application.routes.draw do
+  resources :respondents, :only => [:new, :create, :show] do
+    resource :mama_said, :only => [:new, :create, :show]
+    resource :i_say, :only => [:new, :create, :show]
+  end
+  
+  # get '/respondents/:id/mama_said' => 'relationship_preferences#mama_said_show', :as => :mama_said
+  # post '/respondents/:id/mama_said' => 'relationship_preferences#mama_said_create', :as => :mama_said
+  # 
+  # post '/respondents/:id/i_say' => 'relationship_preferences#i_say_show', :as => :i_say
+  # get '/respondents/:id/i_say' => 'relationship_preferences#i_say_create', :as => :i_say
+  # 
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +61,8 @@ RaceForMyDaughter::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  
+  root :to => "respondents#new"
 
   # See how all your routes lay out with "rake routes"
 

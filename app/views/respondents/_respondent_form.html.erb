@@ -1,0 +1,41 @@
+<%= form_for(respondent) do |f| %>
+	<div id="gender_and_age_form">
+		I am 
+			<%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female", :value => "Female" %>
+			<%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male", :value => "Male" %>
+			<%= f.radio_button :gender, "Other" %> <%= f.label :gender, "Other", :value => "Other" %>
+		and <%= f.number_field :age, :min => 13 %> years old.
+	</div>
+	
+	<div id="have_a_daughter_form">
+		<%= f.check_box :has_a_daughter %> <%= f.label :has_a_daughter, "I have a daughter" %> 
+	</div>
+	
+	<div id="born_in_form">
+		I was born in <%= f.country_select :born_in, ["Canada", "United States"] %>
+	</div>
+	
+	<div id="live_in_form">
+		I live in <%= f.country_select :born_in, ["Canada", "United States"] %>
+	</div>
+	
+	<div id="father_born_in_form">
+		My <em>father</em> was born in <%= f.country_select :father_born_in, ["Canada", "United States"] %>
+	</div>
+	
+	<div id="mother_born_in_form">
+		My <em>mother</em> was born in <%= f.country_select :mother_born_in, ["Canada", "United States"] %>
+	</div>
+	
+	<%= f.submit "Enough about me. Let's get on to the juicy details..."%>
+	
+	
+<% end %>
+
+
+<!-- TODO: this should be moved out of here -->
+<script>
+	$(function() {
+		$( "#gender_and_age_form" ).buttonset();
+	});
+</script>

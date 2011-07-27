@@ -1,0 +1,39 @@
+<h2 class="page_title">Mama Said</h2>
+
+<%= form_for @relationship_preference, :url => respondent_mama_said_path(@respondent) do |f| %>
+
+	<div id="preference_expressed_form">
+		Did your mother ever tell you what races, ethnicities, or nationalities you should date?
+			<%= f.radio_button :any_preference_expressed, "false" %> <%= f.label :any_preference_expressed, "No", :value => "false" %>
+			<%= f.radio_button :any_preference_expressed, "true" %> <%= f.label :any_preference_expressed, "Yes", :value => "true" %>	
+	</div>
+	
+	<div id="kind_of_preference_form">
+		<p>What did your mama say?</p>
+		<div id="kind_of_preference_choices_form">
+			<%= f.check_box :whom_to_be_with %> <%= f.label :whom_to_be_with, "She told me who I should be with" %>
+			<%= f.check_box :whom_not_to_be_with %> <%= f.label :whom_not_to_be_with, "She told me who I should NOT be with" %>
+			<%= f.check_box :some_better_than_others %> <%= f.label :some_better_than_others, "She told me that some are better than others" %>
+		</div>
+	</div>
+<% end %>
+
+<!-- TODO: move this out of here -->
+<script>
+	$(function() {
+		$( "#preference_expressed_form" ).buttonset();
+		
+		//wire up the buttons to show/hide relevant parts of the form
+		$( "#kind_of_preference_form" ).hide();	
+		$( "#relationship_preference_any_preference_expressed_true" ).click(function(){
+			$( "#kind_of_preference_form" ).fadeIn();
+		});	
+		$( "#relationship_preference_any_preference_expressed_false" ).click(function(){
+			$( "#kind_of_preference_form" ).fadeOut();
+		});
+		
+		
+	});
+	
+	
+</script>
