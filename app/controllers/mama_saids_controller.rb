@@ -10,7 +10,11 @@ class MamaSaidsController < RelationshipPreferencesController
     @relationship_preference = RelationshipPreference.create params[:relationship_preference]
     
     if @relationship_preference.save
-      redirect_to new_respondent_i_say_path(@respondent)
+      if @respondent.has_a_daughter
+        redirect_to new_respondent_i_say_path(@respondent)
+      else
+        redirect_to thanks_path
+      end
     else
       respond_to do |format|
         format.html { render :action => :new }
