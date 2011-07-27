@@ -1,4 +1,5 @@
 <h2 class="page_title">Mama Said</h2>
+<%= error_messages_for :relationship_preference %>
 
 <%= form_for @relationship_preference, :url => respondent_mama_said_path(@respondent) do |f| %>
 
@@ -18,22 +19,3 @@
 	</div>
 <% end %>
 
-<!-- TODO: move this out of here -->
-<script>
-	$(function() {
-		$( "#preference_expressed_form" ).buttonset();
-		
-		//wire up the buttons to show/hide relevant parts of the form
-		$( "#kind_of_preference_form" ).hide();	
-		$( "#relationship_preference_any_preference_expressed_true" ).click(function(){
-			$( "#kind_of_preference_form" ).fadeIn();
-		});	
-		$( "#relationship_preference_any_preference_expressed_false" ).click(function(){
-			$( "#kind_of_preference_form" ).fadeOut();
-		});
-		
-		
-	});
-	
-	
-</script>

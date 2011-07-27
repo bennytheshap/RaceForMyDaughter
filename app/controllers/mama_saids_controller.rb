@@ -1,7 +1,21 @@
 class MamaSaidsController < RelationshipPreferencesController
   def new
-    @respondent = Respondent.find params[:respondent_id]
-    @relationship_preference = RelationshipPreference.new
+    super
     @relationship_preference.whos_preference = "mama"
   end
+  
+  def create
+    @respondent = Respondent.find params[:respondent_id]
+    params[:relationship_preference][:whos_preference] = "mama"
+    @relationship_preference = RelationshipPreference.create params[:relationship_preference]
+    
+    if @relationship_preference.save
+      redirect_to new_respondent_i_say_path(@respondent)
+    else
+      respond_to do |format|
+        format.html { render :action => :new }
+      end
+    end
+  end #create
+  
 end
